@@ -1,0 +1,43 @@
+To run any of the scripts:
+
+    python3 modify_ports.py 
+    Input fabric (qic, atl, brm or clt): qic
+    Are you sure you want to select qic? (y or n): y
+    Input username: username
+    Is this the correct username? username (y or n): y
+    Input password: 
+    Would you like to re-type your password? (y or n): n
+    Input change number: test_change
+    Is this the correct change number? test_change (y or n): y
+
+    OR
+
+    python3 <script name> --fabric <fabric name> --user <username> --pass <password> --chg <change number>
+
+    script name - name of the script
+    fabric name - qic, atl, brm, clt
+    username - your username (put in single quotes if it contains special characters)
+    password - your password (put in single quotes if it contains special characters)
+    change # - put your change # or an identifier for the change
+
+    example: python3 port_config.py --fabric qic --user admin --pass 'cisco!23' --chg CHG12345
+
+Each script will also run the get_token.py and the snapshot.py script
+    1. logs in to the fabric and saves the token
+    2. creates a pre-change snapshot before any changes are made.
+    3. Creates a post-change snapshot at the end of the script
+
+Each script will contain logs after they are run. They can be found in the /logs folder.
+
+To check installed libraries:
+    python3 -m pip list
+
+to Install any missing libraries:
+    python3 -m pip install --proxy=http://proxy.ops.tiaa-cref.org:8080 --user -r requirements.txt
+
+
+- get_policy_group.py
+
+    Script actions:
+    1. Will apply storm control to all policy groups.
+
